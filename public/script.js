@@ -25,3 +25,5 @@ socket.on('chat message from self', function(msg) {
     messageListElement.innerText = msg;
     messages.append(messageListElement);
 });
+
+function onMessageInputChange(value) {}
