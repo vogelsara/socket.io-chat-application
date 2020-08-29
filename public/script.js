@@ -54,9 +54,21 @@ function onMessageInputChange(value) {
 }
 
 function showEmojis() {
-
+    
 }
 
 function showNotImplementedMessage() {
     console.log("This feature is not implemented yet.");
+}
+
+function makeRequest(method, url, body, onResponse) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && parseInt(this.status/100) == 2) {
+          onResponse(this.responseText);
+        }
+    }
+    xhttp.open(method, url, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(body));
 }
