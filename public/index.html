@@ -13,7 +13,8 @@
         #messages { list-style-type: none; margin: 0; padding: 0; }
         #messages li { padding: 5px 10px; }
         #messages li:nth-child(odd) { background: #eee; }
-      </style>
+    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <ul id="messages"></ul>
@@ -23,21 +24,21 @@
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  
+    <script src="index.js"></script>
     <script>
         $(function () {
             var socket = io();
             $('form').submit(function(e){
-            e.preventDefault();
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
+                e.preventDefault();
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;
+            });
+                socket.on('chat message', function(msg){
+                    $('#messages').append($('<li>').text(msg));
+            });
         });
-        socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-        });
-    });
     </script>
 </body>
 </html>
