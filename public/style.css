@@ -44,3 +44,7 @@ form button {
 #messages li:nth-child(odd) {
     background: #eee; 
 }
+
+.message-from-self {
+    color: #4287f5;
+}
