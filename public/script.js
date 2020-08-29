@@ -4,6 +4,13 @@ var messages = document.getElementById('messages');
 var messageInputForm = document.getElementById("messageInputForm");
 messageInputForm.addEventListener("submit", sendMessage);
 
+var supportedSlashCommands = {
+    "emoji": showEmojis,
+    "shortcut": showNotImplementedMessage,
+    "shrug": showNotImplementedMessage,
+    "search": showNotImplementedMessage,
+}
+
 function sendMessage(e){
     e.preventDefault();
     var messageInput = document.getElementById("messageInput");
@@ -26,4 +33,30 @@ socket.on('chat message from self', function(msg) {
     messages.append(messageListElement);
 });
 
-function onMessageInputChange(value) {}
+function onMessageInputChange(value) {
+    var commandSearchBox = document.getElementById("slash-command-search");
+    if (value[0] === "/") {
+        var searchText = value.substring(1);
+        commandSearchBox.innerHTML = '';
+        for (var command in supportedSlashCommands) {
+            if (command.startsWith(searchText)) {
+                var commandDiv = document.createElement('div');
+                commandDiv.className = "slashcommand";
+                commandDiv.innerText = command;
+                commandDiv.onclick = supportedSlashCommands[command];
+                commandSearchBox.appendChild(commandDiv);
+            }
+        }
+        commandSearchBox.style.display = "block";
+    } else {
+        commandSearchBox.style.display = "none";
+    }
+}
+
+function showEmojis() {
+
+}
+
+function showNotImplementedMessage() {
+    console.log("This feature is not implemented yet.");
+}

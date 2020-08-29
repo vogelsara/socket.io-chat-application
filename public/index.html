@@ -8,9 +8,12 @@
 </head>
 <body>
     <ul id="messages"></ul>
-    <form id="messageInputForm">
-      <input id="messageInput" autocomplete="off" oninput="onMessageInputChange(this.value)" /><button>Send</button>
-    </form>
+    <div class="inputArea">
+        <div id="slash-command-search" class="dropdown-content"></div>
+        <form id="messageInputForm">
+        <input id="messageInput" autocomplete="off" oninput="onMessageInputChange(this.value)" /><button>Send</button>
+        </form>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
