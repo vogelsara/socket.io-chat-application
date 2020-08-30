@@ -19,6 +19,7 @@ function sendMessage(e){
     messageInput.value = '';
     var commandSearchBox = document.getElementById("slash-command-search");
     commandSearchBox.style.display = "none";
+    hideEmojiSelection();
     return false;
 }
 
@@ -71,6 +72,7 @@ function showEmojis(emojis) {
     var inputArea = document.getElementById("inputArea");
     inputArea.appendChild(emojisContainer);
     emojisContainer.className = "emojisContainer";
+    emojisContainer.id = "emojiContainer";
     for (var i = 0; i < emojis.length; i++) {
         var emoji = emojis[i]["character"];
         var emojiDiv = document.createElement("div");
@@ -82,6 +84,11 @@ function showEmojis(emojis) {
         emojiDiv.innerText = emoji;
         emojisContainer.appendChild(emojiDiv);
     }
+}
+
+function hideEmojiSelection() {
+    emojisContainer = document.getElementById("emojiContainer");
+    emojisContainer.remove();
 }
 
 function insertEmoji(chosenEmoji) {
