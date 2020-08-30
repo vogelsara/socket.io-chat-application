@@ -15,9 +15,10 @@ var supportedSlashCommands = {
 function sendMessage(e){
     e.preventDefault();
     var messageInput = document.getElementById("messageInput");
-    console.log(messageInput.value);
     socket.emit('chat message', messageInput.value);
     messageInput.value = '';
+    var commandSearchBox = document.getElementById("slash-command-search");
+    commandSearchBox.style.display = "none";
     return false;
 }
 
@@ -55,6 +56,8 @@ function onMessageInputChange(value) {
 }
 
 function getEmojis() {
+    var commandSearchBox = document.getElementById("slash-command-search");
+    commandSearchBox.style.display = "none";
     makeRequest("GET", `https://emoji-api.com/emojis?access_key=${key}`, {}, onEmojiResponse);
 }
 
@@ -87,6 +90,8 @@ function insertEmoji(chosenEmoji) {
 }
 
 function showNotImplementedMessage() {
+    var commandSearchBox = document.getElementById("slash-command-search");
+    commandSearchBox.style.display = "none";
     console.log("This feature is not implemented yet.");
 }
 
