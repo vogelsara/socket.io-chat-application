@@ -71,9 +71,19 @@ function showEmojis(emojis) {
     for (var i = 0; i < emojis.length; i++) {
         var emoji = emojis[i]["character"];
         var emojiDiv = document.createElement("div");
+        emojiDiv.onclick = function(arg) {
+            return function() {
+                insertEmoji(arg);
+            }
+        }(emoji);
         emojiDiv.innerText = emoji;
         emojisContainer.appendChild(emojiDiv);
     }
+}
+
+function insertEmoji(chosenEmoji) {
+    var textArea = document.getElementById("messageInput");
+    textArea.value = textArea.value + chosenEmoji;
 }
 
 function showNotImplementedMessage() {
