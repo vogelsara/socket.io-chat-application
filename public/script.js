@@ -3,9 +3,10 @@ var messages = document.getElementById('messages');
 
 var messageInputForm = document.getElementById("messageInputForm");
 messageInputForm.addEventListener("submit", sendMessage);
+let key = '0cb8bb7793c77ef0d11298c542690f95a723aca6';
 
 var supportedSlashCommands = {
-    "emoji": showEmojis,
+    "emoji": getEmojis,
     "shortcut": showNotImplementedMessage,
     "shrug": showNotImplementedMessage,
     "search": showNotImplementedMessage,
@@ -53,8 +54,26 @@ function onMessageInputChange(value) {
     }
 }
 
-function showEmojis() {
-    
+function getEmojis() {
+    makeRequest("GET", `https://emoji-api.com/emojis?access_key=${key}`, {}, onEmojiResponse);
+}
+
+function onEmojiResponse(emojiResponseText) {
+    var emojiList = JSON.parse(emojiResponseText);
+    showEmojis(emojiList);
+}
+
+function showEmojis(emojis) {
+    var emojisContainer = document.createElement("div");
+    var inputArea = document.getElementById("inputArea");
+    inputArea.appendChild(emojisContainer);
+    emojisContainer.className = "emojisContainer";
+    for (var i = 0; i < emojis.length; i++) {
+        var emoji = emojis[i]["character"];
+        var emojiDiv = document.createElement("div");
+        emojiDiv.innerText = emoji;
+        emojisContainer.appendChild(emojiDiv);
+    }
 }
 
 function showNotImplementedMessage() {
@@ -64,8 +83,8 @@ function showNotImplementedMessage() {
 function makeRequest(method, url, body, onResponse) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && parseInt(this.status/100) == 2) {
-          onResponse(this.responseText);
+        if (this.readyState == 4 && parseInt(this.status/100) == 2) {
+            onResponse(this.responseText);
         }
     }
     xhttp.open(method, url, true);

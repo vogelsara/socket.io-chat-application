@@ -2,7 +2,6 @@ const express = require('express')
 var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-let key = '0cb8bb7793c77ef0d11298c542690f95a723aca6';
 
 app.use(express.static('public'))
 

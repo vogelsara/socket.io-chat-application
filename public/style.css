@@ -50,7 +50,7 @@ form button {
 }
 
 /* Slash command search window */    
-.inputArea {
+#inputArea {
     position: relative;
     display: inline-block;
 }
