@@ -25,6 +25,7 @@ function sendMessage(e){
 
 socket.on('chat message from other', function(msg) {
     var messageListElement = document.createElement('li');
+    messageListElement.className = "message-from-other";
     messageListElement.innerText = msg;
     messages.append(messageListElement);
 });

@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <script src="https://kit.fontawesome.com/76a7273210.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"></head>
 <body>
-    <ul id="messages"></ul>
-    <div id="inputArea">
-        <div id="slash-command-search" class="dropdown-content"></div>
-        <form id="messageInputForm">
-        <input id="messageInput" autocomplete="off" oninput="onMessageInputChange(this.value)" /><button>Send</button>
-        </form>
+    <div id="chatArea">
+        <ul id="messages"></ul>
+        <div id="inputArea">
+            <div id="slash-command-search" class="dropdown-content"></div>
+            <form id="messageInputForm">
+                <div id="formContainer">
+                    <input id="messageInput" placeholder="Start typing..." autocomplete="off" oninput="onMessageInputChange(this.value)" />
+                    <i class="fas fa-grin fa-2x"></i>
+                    <button><i class="fas fa-paper-plane fa-2x"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>

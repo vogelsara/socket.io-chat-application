@@ -5,48 +5,94 @@
     box-sizing: border-box;
 }
 
-body {
-    font: 13px Helvetica, Arial;
+html, body {
+    background-image: url('bg.jpg');
+    background-size: 2000px auto;
+    height: 100%;
+    font-family: 'Alata', sans-serif;
+}
+
+#chatArea{
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    margin: -1em auto -1em auto;
+    position: relative;
 }
 
 form {
-    background: #000;
     padding: 3px;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 50%;
+}
+
+#formContainer{
+    display: block;
+    margin: 0px auto 30px auto;
+    text-align: center;
 }
 
 form input {
     border: 0;
-    padding: 10px;
-    width: 90%;
-    margin-right: 0.5%;
+    padding: 20px 10px 10px 10px;
+    width: 80%;
+    background-color: #e0f2ec;
+    border-radius: 34px;
 }
 
-form button {
-    width: 9%;
-    background: rgb(130, 224, 255);
+*:focus {
+    outline: none;
+}
+
+form button{
+    background: none;
+    color: none;
     border: none;
-    padding: 10px;
 }
 
-#messages {
+i{
+    color: #afe391;
+}
+
+#messages{
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: [first] 10px [second] 45% [third] auto [fourth] 45% [fifth] 10px;
 }
 
-#messages li {
-    padding: 5px 10px;
+#messages li{
+    max-width: 70%;
+    margin: 1em;
+    padding: 0.5em;
+    display: table;
+    word-break: break-all;
 }
 
-#messages li:nth-child(odd) {
-    background: #eee; 
+.message-from-self{
+    background-color: #e0f2ec;
+    text-align: right;
+    max-width: 70%;
+    grid-column-start: third;
+    grid-column-end: fifth;
+    -webkit-box-shadow: -5px 5px 8px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -5px 5px 8px -4px rgba(0,0,0,0.75);
+    box-shadow: -5px 5px 8px -4px rgba(0,0,0,0.75);
+    border-radius: 5px;
 }
 
-.message-from-self {
-    color: #4287f5;
+.message-from-other{
+    background-color: #afe391;
+    max-width: 70%;
+    grid-column-start: second;
+    grid-column-end: fourth;
+    color: #fff;
+    -webkit-box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.75);
+    border-radius: 5px;
 }
 
 /* Slash command search window */    
@@ -63,6 +109,7 @@ form button {
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
+    top: 530px;
 }
   
 .dropdown-content div {
