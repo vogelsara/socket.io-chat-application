@@ -12,10 +12,10 @@ There are also other commands but they are not implemented in this project. I ju
 
 
 ### Room for improvement
-•	There could be different users with their own login datas.
-•	When a user is typing it could be seen by the other users.
-•	It could be possible to choose only one person or create different separate groups to send messages only for them.
-•	There could be much more command actions such as a search function or adding gifs to the message.
-•	There could be notifications as a new message appears.
-•	The style of the application could also be more accurate, just an example that the messages could automatically scroll down to the bottom.
+*	There could be different users with their own login datas.
+*	When a user is typing it could be seen by the other users.
+*	It could be possible to choose only one person or create different separate groups to send messages only for them.
+*	There could be much more command actions such as a search function or adding gifs to the message.
+*	There could be notifications as a new message appears.
+*	The style of the application could also be more accurate, just an example that the messages could automatically scroll down to the bottom.
 
