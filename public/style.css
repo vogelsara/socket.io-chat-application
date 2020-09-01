@@ -126,3 +126,11 @@ i{
 .show {
     display: block;
 }
+
+.emojisContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 400px;
+    overflow: scroll;
+}
